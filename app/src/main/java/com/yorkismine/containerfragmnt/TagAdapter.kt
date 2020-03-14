@@ -24,9 +24,11 @@ class TagAdapter(
     override fun onBindViewHolder(holder: TagHolder, position: Int) {
         val tag = list[position]
         holder.tagText.text = tag.text
+        holder.stateText.text = tag.state
     }
 
     class TagHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tagText: TextView = view.findViewById<TextView>(R.id.tag_tv)
+        val tagText: TextView = view.findViewById(R.id.tag_tv)
+        val stateText: TextView = view.findViewById(R.id.state_tv)
     }
 }

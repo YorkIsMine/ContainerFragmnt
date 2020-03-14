@@ -10,6 +10,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.OnLifecycleEvent
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -89,7 +92,8 @@ class MainActivity : AppCompatActivity() {
             val list = ArrayList<Tag>()
 
             for (i in supportFragmentManager.fragments) {
-                list.add(Tag(i.tag!!))
+                val f: SimpleFragment = i as SimpleFragment
+                list.add(Tag(i.tag!!, f.state))
             }
 
             intent.putParcelableArrayListExtra("list", list)
